@@ -24,10 +24,9 @@ func StructToString(i interface{}) string {
 
 // StructToIndentedString marshalls a struct into json and then outputs an indented json string
 func StructToIndentedString(i interface{}) string {
-	structBytes, err := json.Marshal(i)
+	indented, err := json.MarshalIndent(i, "", "    ")
 	if err != nil {
 		log.WithError(err).Error("unable to marhsal struct into bytes")
 	}
-	indented, _ := json.MarshalIndent(structBytes, "", "    ")
 	return string(indented)
 }
