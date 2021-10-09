@@ -13,7 +13,7 @@ func InterfaceToString(i interface{}) string {
 	return s
 }
 
-// StructToString marshalls a struct into bytes and then outputs them as a string
+// StructToString marshalls a struct into json and then outputs them as a json string
 func StructToString(i interface{}) string {
 	structBytes, err := json.Marshal(i)
 	if err != nil {
@@ -22,7 +22,8 @@ func StructToString(i interface{}) string {
 	return string(structBytes)
 }
 
-func StructToIndentedJson(i interface{}) string {
+// StructToIndentedString marshalls a struct into json and then outputs an indented json string
+func StructToIndentedString(i interface{}) string {
 	structBytes, err := json.Marshal(i)
 	if err != nil {
 		log.WithError(err).Error("unable to marhsal struct into bytes")
